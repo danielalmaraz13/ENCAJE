@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Encaje</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#4A0D23">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Encaje">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>
+  /* ============================================================
+     ÚNICO CAMBIO: pegá entre las comillas la URL de tu web app
+     (la que termina en /exec, de Implementar → Administrar implementaciones)
+     ============================================================ */
+  var ENCAJE_URL = 'PEGAR_ACA_LA_URL_QUE_TERMINA_EN_/exec';
+
+  // Abierta desde el ícono del celular: va directo a la app.
+  var desdeIcono = /[?&]app=1/.test(location.search) ||
+    (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone;
+  if (desdeIcono && /^https:\/\/script\.google\.com\/.*\/exec/.test(ENCAJE_URL)) location.replace(ENCAJE_URL);
+</script>
+<style>
+  html,body{margin:0;min-height:100%;background:#4A0D23;color:#FFF8F4;font:16px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif}
+  main{max-width:420px;margin:0 auto;padding:48px 24px;text-align:center}
+  img{width:112px;height:112px;border-radius:26px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  h1{font:italic 800 40px/1.1 Georgia,serif;margin:20px 0 6px}
+  p{color:#F2DDD6;margin:8px 0}
+  a.btn{display:block;margin:28px 0 22px;background:#F4C430;color:#4A0D23;font-weight:700;text-decoration:none;padding:16px;border-radius:12px;font-size:18px}
+  ol{text-align:left;color:#F2DDD6;padding-left:22px}
+  li{margin:6px 0}
+  .warn{background:#F2DDD6;color:#4A0D23;padding:12px;border-radius:10px;margin-top:20px;display:none}
+</style>
+</head>
+<body>
+<main>
+  <img src="icono-192.png" alt="">
+  <h1>Encaje</h1>
+  <p>Gestión del local</p>
+  <a class="btn" id="abrir" href="#">Abrir Encaje</a>
+  <p><b>Para tenerla como app en el celular:</b></p>
+  <ol>
+    <li><b>Android (Chrome):</b> menú ⋮ → <i>Agregar a pantalla principal</i> o <i>Instalar app</i>.</li>
+    <li><b>iPhone (Safari):</b> botón Compartir → <i>Agregar a inicio</i>.</li>
+  </ol>
+  <div class="warn" id="warn">Falta pegar la URL de la app en este archivo (ENCAJE_URL).</div>
+</main>
+<script>
+  var ok = /^https:\/\/script\.google\.com\/.*\/exec/.test(ENCAJE_URL);
+  document.getElementById('abrir').href = ok ? ENCAJE_URL : '#';
+  if (!ok) document.getElementById('warn').style.display = 'block';
+</script>
+</body>
+</html>
